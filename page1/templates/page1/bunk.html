@@ -1,0 +1,42 @@
+{% extends 'page1/base.html' %}
+{% block tile %}Create new list {% endblock %}
+{% block content %}
+<style>
+input{
+    color: white;
+    display: block;
+    width: 270px;
+    text-align: left;
+    background-color: #23272B;
+    font-family:'Tw Cen MT'; 
+    border: 0px;
+    border-radius: 4px;
+}
+form{
+    color: red;
+    display: inline-block;
+    width: 270px;
+    text-align: left;
+}
+input[type='submit']{
+    color: red;
+    align-self:flex-end;
+}
+</style>
+<form method="post" action="/bunk/" class="form-group">
+    {% csrf_token %}
+    {{boonk.as_p}}
+    <p><input type="submit", value="Add", name="save" class='btn btn-dark' ></p>
+</form>
+<p style="color: yellow">{{class_attend}}</p>
+{% if percent >= 100 %}
+    <p style="color: yellow">Enter valid data</p>
+{% elif percent < 75 %}
+    <p style="color: white;">Minimum attendance needed = {{min_attend}}</p>
+    <p style="color: red;">Your attendance = {{percent}}%</p>
+{% elif percent > 75%}
+    <p style="color: white;">Minimum attendance needed = {{min_attend}}</p>
+    <p style="color: green;">Your attendance = {{percent}}%</p>
+{% endif %} 
+<p>To see your data <a href="http://127.0.0.1:8000/subject/">Click Here!</a></p>
+{% endblock %}

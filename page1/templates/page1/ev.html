@@ -1,0 +1,37 @@
+{% extends "page1/base.html" %}
+{% block title %}Linear Regression{% endblock %}
+{% block content %}
+<style>
+    input{
+         color: white;
+         display: block;
+         width: 270px;
+         text-align: left;
+         background-color: #23272B;
+         font-family:'Tw Cen MT'; 
+         border: 0px;
+         border-radius: 4px;
+    }
+ 
+     input[type='submit']{
+         color: red;
+         align-self:flex-end;
+         display: block;
+         width: 270px;
+         text-align: center;
+     }
+     form{
+         color: red;
+     }
+     text{
+         color: white;
+         font-family: 'Tw Cen MT';
+     }
+</style>
+<form action="/mlr/", method="POST">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit", class="btn btn-dark", name="save", value="O">
+</form>
+
+{% endblock %}

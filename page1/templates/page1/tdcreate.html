@@ -1,0 +1,54 @@
+{% extends 'page1/base.html' %}
+{% block title %}
+Create New List
+{% endblock %}
+
+{% block content %}
+	<h3>Create a New To Do List</h3>
+	<br>
+	<style>
+		input{
+			 color: white;
+			 display: block;
+			 width: 270px;
+			 text-align: left;
+			 background-color: #23272B;
+			 font-family:'Tw Cen MT'; 
+			 border: 0px;
+			 border-radius: 4px;
+		}
+	 
+		 input[type='submit']{
+			 color: red;
+			 align-self:flex-end;
+			 color: red;
+			 display: block;
+			 width: 270px;
+			 text-align: center;
+		 }
+		 form{
+			 color: red;
+		 }
+		 a{
+			 color: white;
+			 font-family: 'TW Cen MT';
+			 font-size: 20px;
+		 }
+		 a:hover{
+			 color: red
+			 ;
+		 }
+		 h3{
+			 color: white;
+			 font-family: 'TW Cen MT';
+		 }
+		 </style>
+	<form method="post", action="/tdcreate/" class="form-group">
+		{% csrf_token %}
+		{{form.as_p}}  
+		<p><input name="save", type="submit", class="btn btn-dark" value="+"></p>
+	</form>
+	{% for x in ls %}
+	<li><a href="/td/{{x.id}}">{{x.name}}</a></li>
+	{% endfor %}
+{% endblock %}

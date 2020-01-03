@@ -1,0 +1,25 @@
+{% extends "page1/base.html" %}
+{% block content %}
+<style>
+    button{
+        width: 135px;
+        font-family: 'TW Cen MT';
+    }
+    input{
+        color: red;
+    }
+    a{
+        color: white;
+        font-family: "TW Cen MT";
+    }
+</style>
+    {% csrf_token %}
+    {% for x in ls %}
+    <p>
+        <button class="btn btn-dark"onclick="window.location.href = '{{x.link}}'" type="button">
+            {{x.name}}
+        </button>
+    </p>
+    {% endfor %}
+    <li><a href="http://127.0.0.1:8000/create/">Add PDF</a></li>
+{% endblock %}

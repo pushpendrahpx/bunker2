@@ -1,0 +1,38 @@
+{% extends "page1/base.html" %}
+{% block content %}
+<style>
+    #sub td, #sub th{
+        font-family: TW Cen MT;
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 20px;
+    }
+    #sub tr{color:#ffffff;}
+    #sub tr:nth-child(even){background-color: #000000;}
+    #sub tr:hover {color: #23272B;}
+
+
+    #sub th {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: left;
+        background-color: #000000;
+        color: #ff0000;
+    }
+</style>
+    {% csrf_token %}
+    <table id="sub">
+        <tr id="head">
+            <th>Subject</th>
+            <th>Total Class</th>
+            <th>Class attended</th>
+        </tr>
+        {% for x in ls %}
+        <tr>
+            <td>{{x.subject}}</td>
+            <td>{{x.total_attend}}</td>
+            <td>{{x.class_attend}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

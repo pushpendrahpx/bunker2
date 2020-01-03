@@ -1,0 +1,11 @@
+{% extends "page1/base.html" %}
+{% block content %}
+    {% csrf_token %}
+    <ul>
+    	<font color="#FFFFFF" size=5 style="font-family:Tw Cen MT">    
+        {% for x in ls %}
+            <li><a href="http://127.0.0.1:8000/{{x.name}}">{{x.name}}</a></li>
+        {% endfor %}
+        </font>
+    </ul>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'page1/base.html' %}
+{% block title %}Wishlist{% endblock %}
+{% block content %}
+{% for x in ls %}
+<style>
+    #sub td, #sub th{
+        font-family: TW Cen MT;
+        border-collapse: collapse;
+        width: 50%;
+        font-size: 20px;
+    }
+    #sub tr{color:#ffffff;}
+    #sub tr:nth-child(even){background-color: #000000;}
+
+    #sub th {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        text-align: left;
+        background-color: #000000;
+        color: #ff0000;
+    }
+</style>
+<table id="sub">
+    <tr id="head">
+        <th>Item</th>
+        <th>Wish Price</th>
+        <th>Email</th>
+        <th>Price</th>
+    </tr>
+    {% for x in ls %}
+    <tr>
+        <td><a href="{{x.item_link}}">{{x.item}}</a></td>
+        <td>{{x.base_price}}</td>
+        <td>{{x.email}}</td>
+        <td>{{price}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %}
+{% endblock %}

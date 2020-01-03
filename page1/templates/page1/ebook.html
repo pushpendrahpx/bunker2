@@ -1,0 +1,12 @@
+{% extends "page1/base.html" %}
+{% block title %}Ebooks{% endblock %}
+{% block content %}
+<style>
+     form{
+         color: red;
+     }
+</style>
+<form method="POST" class="form-group">
+    {{form.as_p}}
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'page1/base.html' %}
+{% block title %}Amazon Price Tracker{% endblock %}
+{% block content %}
+<style>
+input{
+    color: white;
+    display: block;
+    width: 270px;
+    text-align: left;
+    background-color: #23272B;
+    font-family:'Tw Cen MT'; 
+    border: 0px;
+    border-radius: 4px;
+}
+
+input[type='submit']{
+    color: red;
+    align-self:flex-end;
+    color: red;
+    display: block;
+    width: 270px;
+    text-align: center;
+}
+form{
+    color: red;
+}
+</style>
+<form action="/pt/" method="POST">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit", value="Tracker", name="save", class="btn btn-dark">
+<a href="/pt/wishlist/">Wishlist</a>
+</form>
+{% endblock %}

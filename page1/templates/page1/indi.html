@@ -1,0 +1,75 @@
+{% extends 'page1/base.html' %}
+
+{% block title %}View List{% endblock %}
+
+{% block content %}
+<style>
+	input[type="submit"]{
+		color: red;
+		font-family: "TW Cen MT";
+		width: 135px;
+	}
+	input[type='text']{
+		color: white;
+        display: block;
+        width: 270px;
+        text-align: left;
+        background-color: #23272B;
+        font-family:'Tw Cen MT'; 
+        border: 0px;
+        border-radius: 4px;
+	}
+  	input[type="checkbox"] {
+  		display: block;
+		position: relative;
+		padding-left: 35px;
+		margin-bottom: 12px;
+		cursor: pointer;
+		font-size: 22px;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+}
+	input[type="checkbox"] input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+		;
+	}
+	input[type="checkbox"] {
+		position: absolute;
+		top: 6px;
+		left: 0;
+		height: 25px;
+		width: 25px;
+		background-color: red
+	}
+	h2{
+		color: white;
+		font-family: 'TW Cen MT';
+	}
+</style>
+	<h2>{{ls.name}}</h2>
+	<form method="post", action="#">
+		{% csrf_token %}
+		<input type="text" name="new" value="" class="form-control">
+		<br>
+		<input name="add", value="Add", type="submit", class="btn btn-dark">
+		<input name="save", value="Save", type="submit", class="btn btn-dark">
+		<br>
+		<br>
+		{% for item in ls.item_set.all%}
+			<div class="input-group mb3">
+	  			<div class="input-group-prepend">
+	    			<div class="input-group-text">
+	      				<input type="checkbox" name="c{{item.id}}" value="clicked" aria-label="Checkbox for following text input" {% if item.complete %} checked {% endif %}>
+	    			</div>
+				  </div>
+	  			<input type="text" name="text{{item.id}}" value="{{item.text}}" class="form-control" aria-label="Text input with checkbox" width=>
+			</div>
+		{% endfor %}
+	</form>
+{% endblock %}

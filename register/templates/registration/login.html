@@ -1,0 +1,32 @@
+{% extends "page1/base.html" %}
+{% block title %}Login to Bunker{% endblock %}
+{% block content %}
+<style>
+    input{
+    color: white;
+    display: block;
+    width: 270px;
+    text-align: left;
+    background-color: #23272B;
+    font-family:'Tw Cen MT'; 
+    border: 0px;
+    border-radius: 4px;
+    }
+    form{
+        color: red;
+        display: inline-block;
+        width: 300px;
+        text-align: left;
+    }
+    input[type='submit']{
+        color: red;
+        align-self:flex-end;
+    }
+</style>
+<form method="POST" class="form-group" >
+    {% csrf_token %}
+    {{form.as_p}}
+    <p>Don't have an account?Create one <a href="/register/">here</a></p>
+    <button type="submit" class="btn btn-dark">Login</button>
+</form>
+{% endblock %}
