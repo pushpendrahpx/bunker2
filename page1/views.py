@@ -12,11 +12,13 @@ import pdb
 import requests 
 from bs4 import BeautifulSoup
 import smtplib
+import sklearn
+from django.core.files.storage import FileSystemStorage
 
 
 def index(response):
     return render(response, "page1/home1.html", {})
-
+ 
 
 def admin(response):
     return render(response, "page1/admin.html", {})
@@ -253,6 +255,18 @@ Check out at {item_link}
 
 def wishlist(request):
     ls = PtModel1.objects.all()
+    if request.method == 'POST':
+        form = PtForm(request.POST)
+        if form.is_valid():
+            item_link = form.cleaned_data('item_link')
+            item = form.cleaned_data('item')
+            item_link = form.cleaned_data('item_link')
+
+
+
     return render(request, 'page1/wishlist.html', {
         'ls' : ls,
     })
+
+
+  

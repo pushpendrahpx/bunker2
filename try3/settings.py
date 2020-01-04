@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'page1.apps.Page1Config',
+    'ml.apps.MlConfig',
     'register.apps.RegisterConfig',
     'crispy_forms',
     ]
@@ -130,3 +131,9 @@ CISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/uploadedfiles/'
+
+ 

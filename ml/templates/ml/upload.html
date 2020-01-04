@@ -1,0 +1,22 @@
+{% extends 'page1/base.html' %}
+{% block title %}Upload Database{% endblock %}
+{% block content %}
+<style>
+  form{
+    font-family: 'TW Cen MT';
+    font-size: 18px;
+    color: white;
+  }
+  input[type='file']{
+    border-color: red;
+
+  }
+</style>
+<form action="/upload/", enctype="multipart/form-data", method="POST">
+    {% csrf_token %}
+    <input type="file" name="document">
+    <input type="submit" name="submit" value='upload' class="btn btn-dark">
+    <p>File Uploaded = <a href="{{url}}">{{name}}</a></p>
+</form>
+  
+{% endblock %}
